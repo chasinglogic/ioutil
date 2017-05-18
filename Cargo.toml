@@ -1,0 +1,6 @@
+[package]
+name = "ioutil"
+version = "0.1.0"
+authors = ["Mathew Robinson <chasinglogic@gmail.com>"]
+
+[dependencies]
