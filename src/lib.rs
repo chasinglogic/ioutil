@@ -9,6 +9,38 @@ use std::path::Path;
 
 pub type IOResult = Result<String, io::Error>;
 
+pub fn password_prompt(p: &str) -> IOResult {
+    print!("{}", p);
+    let mut r = stdout().flush();
+    if r.is_err() {
+        return Err(r.unwrap_err())
+    }
+
+    let mut buf = String::new();
+    for byt in stdin().bytes() {
+        print!("*");
+        r = stdout().flush();
+        if r.is_err() {
+            return Err(r.unwrap_err())
+        }
+
+        match byt {
+            Ok(b) => {
+                let ch = b as char;
+
+                if ch == '\n' {
+                    break
+                }
+
+                buf.push(ch)
+            },
+            Err(e) => return Err(e),
+        };
+    }
+
+    Ok(buf)
+}
+
 pub fn prompt(p: &str) -> IOResult {
     print!("{}", p);
     let r = stdout().flush();
