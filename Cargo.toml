@@ -2,5 +2,9 @@
 name = "ioutil"
 version = "0.0.1"
 authors = ["Mathew Robinson <mrobinson@praelatus.io>"]
+description = "IO Utility functions to make common tasks in Rust less cumbersome."
+license = "Apache-2.0"
+readme = "./README.md"
+license-file = "./LICENSE"
 
 [dependencies]
